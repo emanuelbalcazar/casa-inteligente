@@ -8,7 +8,8 @@
         'dialogs.main',
         'ui.bootstrap',      // ui-bootstrap (ex: carousel, pagination, dialog)
         'toastr',
-        'ngCookies'
+        'ngCookies',
+        'navigationBar'
     ]);
 
     app.run(['$rootScope', '$route', function ($rootScope, $route) {

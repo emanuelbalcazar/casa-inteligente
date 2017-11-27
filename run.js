@@ -1,6 +1,4 @@
 // run.js - configure and start the application.
-var router = require('./routes/routes');
-var index = require('./routes/index');
 var host = require('./config/app.json').host;
 var port = require('./config/app.json').port;
 
@@ -14,8 +12,14 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+var index = require('./routes/index');
 app.get(index);
+
+var router = require('./routes/routes');
 app.use(router);
+
+var machine = require('./routes/machine');
+app.use(machine);
 
 // static files.
 app.use(express.static(path.join(__dirname, 'public')));

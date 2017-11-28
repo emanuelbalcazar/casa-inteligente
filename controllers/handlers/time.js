@@ -1,5 +1,6 @@
 var async = require('async');
 var Handler = require('./handler');
+var controller = require('../machine');
 
 class Time extends Handler {
 
@@ -25,7 +26,8 @@ class Time extends Handler {
                 // if the entry meets the condition, I transition and return the updated automata.
                 if ((value >= transitions[i].min) && (value <= transitions[i].max)) {
                     machine.currentState = transitions[i].to;
-                    return callback(false, machine);
+                    controller.update(machine._id, machine, callback);
+                    return;
                 }
             }
 

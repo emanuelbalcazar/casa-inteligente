@@ -40,7 +40,7 @@ var inputs = [
     }
 ];
 
-router.get('/inputs', function (req, res) {
+router.get('/api/inputs', function (req, res) {
     res.send(inputs);
 });
 

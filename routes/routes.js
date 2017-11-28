@@ -17,7 +17,7 @@ router.get('/api/execute/:event/:data', function (req, res) {
             return defaultCallback(res, error, handler);
 
         handler.inicialize(function (error, all) {
-            handler.execute(req.params.data, function (error, result) {
+            handler.execute(req.params.data, all, function (error, result) {
                 defaultCallback(res, error, result);
             });
         });

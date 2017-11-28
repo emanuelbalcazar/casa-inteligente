@@ -16,7 +16,7 @@ class Handler {
      * Execute the handle with the received input.
      * @memberof Handler
      */
-    execute(data,  callback) {
+    execute(value, machines, callback) {
         throw new Error('execute() must be implemented');
     };
 }

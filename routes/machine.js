@@ -39,7 +39,7 @@ router.delete('/api/machine/:id', function (req, res) {
 
 // create a new machine.
 router.post('/api/machine', function (req, res) {
-    var machine = req.body.data;
+    var machine = req.body;
 
     controller.save(machine, function (error, result) {
         defaultCallback(res, error, result);

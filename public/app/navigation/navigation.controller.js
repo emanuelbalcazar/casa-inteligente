@@ -46,8 +46,8 @@
             $location.path('/home');
         };
 
-        $scope.toMachines = function() {
-            $location.path('/machines');
+        $scope.toSimulator = function() {
+            $location.path('/simulation');
         };
 
     } // fin controlador.

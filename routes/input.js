@@ -6,27 +6,37 @@ var inputs = [
     {
         name: "Tiempo",
         type: "time",
-        unit: "Hs"
+        unit: "Hs",
+        min: 0,
+        max: 23
     },
     {
         name: "Temperatura",
         type: "temperature",
-        unit: "C°"
+        unit: "°C",
+        min: 0,
+        max: 40
     },
     {
         name: "Movimiento",
         type: "movement",
-        unit: ""
+        unit: "",
+        min: 0,
+        max: 1
     },
     {
         name: "Humedad",
         type: "humidity",
-        unit: "%"
+        unit: "%",
+        min: 0,
+        max: 100
     },
     {
         name: "Luminosidad",
         type: "brightness",
-        unit: "%"
+        unit: "%",
+        min: 0,
+        max: 100
     }
 ];
 

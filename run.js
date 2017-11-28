@@ -21,6 +21,9 @@ app.use(router);
 var machine = require('./routes/machine');
 app.use(machine);
 
+var inputs = require('./routes/input');
+app.use(inputs);
+
 // static files.
 app.use(express.static(path.join(__dirname, 'public')));
 

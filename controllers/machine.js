@@ -34,6 +34,12 @@ exports.update = function (id, machine, callback) {
     });
 };
 
+exports.merge = function (machine, callback) {
+    Machine.update(machine, { upsert: true }, function (error, updated) {
+        return callback(error, updated);
+    });
+};
+
 exports.delete = function (id, callback) {
     Machine.remove({ _id: id }, function (error) {
         return callback(error, true);

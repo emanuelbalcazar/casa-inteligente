@@ -1,0 +1,47 @@
+{
+    "name": "Sensor de Humedad",
+    "description": "Automata que simula el comportamiento del sensor de humedad en la casa inteligente.",
+    "currentState": 1,
+    "nodes": [
+        {
+            "id": 1,
+            "label": "Fundamentos",
+            "description": "",
+            "output": "false"
+        },
+        {
+            "id": 2,
+            "label": "Teoricos",
+            "description": "",
+            "output": "false"            
+        },
+        {
+            "id": 3,
+            "label": "Informatica",
+            "description": "",
+            "output": "true"            
+        }
+    ],
+    "edges": [
+        {
+            "id": 1,
+            "label": "",
+            "description": "",
+            "from": 1,
+            "to": 2,
+            "type": "humidity",
+            "min": 0,
+            "max": 100
+        },
+        {
+            "id": 2,
+            "label": "de la",
+            "description": "",
+            "from": 2,
+            "to": 3,
+            "type": "humidity",            
+            "min": 0,
+            "max": 100
+        }
+    ]
+}

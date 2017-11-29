@@ -41,7 +41,7 @@ var inputs = [
 ];
 
 router.get('/api/inputs', function (req, res) {
-    res.send(inputs);
+    res.send({response: inputs});
 });
 
 module.exports = router;

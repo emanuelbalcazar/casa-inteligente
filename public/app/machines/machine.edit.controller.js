@@ -57,7 +57,7 @@
             var edges = utils.objectToArray($scope.networkData.edges._data);
             var machine = { name: $scope.machine.name, description: $scope.machine.description, nodes: nodes, edges: edges };
 
-            machineSrv.save(machine).then(function (result) {
+            machineSrv.save($scope.machine).then(function (result) {
                 if (result.error)
                     return logger.error('No se pudo persistir el automata', 'Error');
 
@@ -76,7 +76,7 @@
             var edges = utils.objectToArray($scope.networkData.edges._data);
             var machine = { name: $scope.machine.name, description: $scope.machine.description, nodes: nodes, edges: edges };
 
-            machineSrv.update($scope.machine._id, machine).then(function (result) {
+            machineSrv.update($scope.machine._id, $scope.machine).then(function (result) {
                 if (result.error)
                     return logger.error('No se pudo actualizar el automata', 'Error');
 

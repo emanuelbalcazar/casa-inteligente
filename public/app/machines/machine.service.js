@@ -32,7 +32,7 @@
 
             /**
              * Busca un automata por su ID.
-             * @param {Number} id 
+             * @param {Number} id
              */
             function findById(id) {
                 return $http.get('api/machine/' + id).then(
@@ -46,7 +46,7 @@
 
             /**
              * Envia a persistir un nuevo automata.
-             * @param {Object} machine 
+             * @param {Object} machine
              */
             function save(machine) {
                 return $http.post('api/machine/', {data: machine}).then(
@@ -60,8 +60,8 @@
 
             /**
              * Envia a actualizar un automata
-             * @param {Number} id 
-             * @param {Object} machine 
+             * @param {Number} id
+             * @param {Object} machine
              */
             function update(id, machine) {
                 return $http.post('api/machine/' + id, machine).then(
@@ -75,7 +75,7 @@
 
             /**
              * Envia a eliminar un automata.
-             * @param {Number} id 
+             * @param {Number} id
              */
             function destroy(id) {
                 return $http.delete('api/machine/' + id).then(

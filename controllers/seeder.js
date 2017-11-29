@@ -1,12 +1,15 @@
 var async = require('async');
 var controller = require('./machine');
 
+// file names
 var machines = ['time', 'temperature', 'movement', 'humidity', 'brightness'];
 
+// delete all machines.
 controller.deleteAll(function (error, deleted) {
     load();
 });
 
+// load the database with pre-configured machines.
 function load() {
     async.map(machines, function (machine, callback) {
         var module = "../json/" + machine + ".json";

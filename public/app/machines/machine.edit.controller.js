@@ -3,10 +3,10 @@
 
     var controllerName = 'machineEditCtrl';
 
-    angular.module('app').controller(controllerName, ['$scope', 'machinesSrv', '$routeParams', 'toastr', '$location', 'utils', machineEditCtrl]);
+    angular.module('app').controller(controllerName, ['$scope', 'machinesSrv', '$routeParams', 'toastr', '$location', 'utils', 'dialogs', machineEditCtrl]);
 
 
-    function machineEditCtrl($scope, machineSrv, $routeParams, logger, $location, utils) {
+    function machineEditCtrl($scope, machineSrv, $routeParams, logger, $location, utils, dialogs) {
 
         // Busca un automata por su ID y lo renderiza en la pantalla.
         function findById(id) {
@@ -22,8 +22,16 @@
             });
         }
 
+        function findDraft() {
+            machineSrv.getJson().then(function (result) {
+                $scope.machine = result.response;
+                $scope.networkData.nodes.add($scope.machine.nodes);
+                $scope.networkData.edges.add($scope.machine.edges);
+            });
+        }
+
         // bandera que indica si el automata es nuevo.
-        $scope.machine = { _id: false, name: "", nodes: [], edges: [], description: "" };
+        $scope.machine = { _id: false, name: "", nodes: [], edges: [], description: "", currentState: "" };
 
         if ($routeParams.id != "new") {
             findById($routeParams.id);
@@ -109,14 +117,11 @@
                     to: true
                 }
             },
-            nodes: {
-                physics: true
-            },
-            locale: 'es',
             interaction: {
                 navigationButtons: true,
                 hoverConnectedEdges: false
             },
+            locale: 'es',
             manipulation: {
                 addNode: function (node, callback) {
                     node.label = "";

@@ -1,12 +1,17 @@
 // router.js - application route module.
 var express = require('express');
 var router = express.Router();
+var draft = require('../json/draft.json');
 var factory = require('../controllers/handlers/handlerFactory');
 
 // service information path.
 router.get('/info', function (req, res) {
     var info = { version: "2.0", build: "november 2017" };
     defaultCallback(res, null, info);
+});
+
+router.get('/api/json/draft', function (req, res) {
+    defaultCallback(res, false, draft);
 });
 
 // execute an entry in all the machines.

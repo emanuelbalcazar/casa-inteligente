@@ -5,6 +5,7 @@
   "main": "run.js",
   "scripts": {
     "start": "node run.js",
+    "seeds": "node ./controllers/seeder.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

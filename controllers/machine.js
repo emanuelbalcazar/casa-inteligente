@@ -45,3 +45,9 @@ exports.delete = function (id, callback) {
         return callback(error, true);
     });
 };
+
+exports.deleteAll = function (callback) {
+    Machine.remove({}, function (error) {
+        return callback(error, true);
+    });
+};

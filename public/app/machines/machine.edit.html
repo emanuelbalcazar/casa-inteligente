@@ -6,4 +6,22 @@
       </vis-network>
   </div>
 
+  <div>
+    <label>Nombre del automata:</label>
+    <br>
+    <input type="text" name="name" data-ng-model="machine.name" placeholder=" Nombre del automata" ng-disabled="true">
+    <br>
+    <br>
+    <label>Descripción:</label>
+    <br>
+    <textarea type="text" name="description" rows="7" data-ng-model="machine.description" placeholder=" Descripción (opcional)"></textarea>
+    <br>
+    <br>
+
+    <button class="btn btn-sm btn-primary" title="Guardar automata" data-ng-click="save()">
+        <i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;Guardar
+    </button>
+
+</div>
+
 </div>

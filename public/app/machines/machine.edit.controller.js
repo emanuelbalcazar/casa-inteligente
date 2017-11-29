@@ -3,10 +3,10 @@
 
     var controllerName = 'machineEditCtrl';
 
-    angular.module('app').controller(controllerName, ['$scope', 'machinesSrv', '$routeParams', 'toastr', '$location', 'utils', 'dialogs', machineEditCtrl]);
+    angular.module('app').controller(controllerName, ['$scope', 'machinesSrv', 'simulatorSrv', '$routeParams', 'toastr', '$location', 'utils', 'dialogs', machineEditCtrl]);
 
 
-    function machineEditCtrl($scope, machineSrv, $routeParams, logger, $location, utils, dialogs) {
+    function machineEditCtrl($scope, machineSrv, simulatorSrv, $routeParams, logger, $location, utils, dialogs) {
 
         // Busca un automata por su ID y lo renderiza en la pantalla.
         function findById(id) {
@@ -135,7 +135,8 @@
                 },
                 editEdge: {
                     editWithoutDrag: function (edge, callback) {
-                        showEdgeModal(edge, callback);
+                       edge = $scope.networkData.edges._data[edge.id];
+                       showEdgeModal(edge, callback);
                     }
                 },
                 deleteNode: function (node, callback) {
@@ -164,7 +165,7 @@
         /**
          * Muestra el modal de edicion de nodo.
          * @param {Object} node nodo a editar
-         * @param {Function} callback 
+         * @param {Function} callback
          */
         function showNodeModal(node, callback) {
             var dlg = dialogs.create('/app/dialogs/nodeDlg.html', 'nodeDlgCtrl', node, { size: 'md' });
@@ -183,11 +184,11 @@
 
         /**
          * Muestra el modal de edicion de relacion.
-         * @param {Object} edge 
-         * @param {Function} callback 
+         * @param {Object} edge
+         * @param {Function} callback
          */
         function showEdgeModal(edge, callback) {
-            var inputs = getEdgeInputs();
+            var inputs = $scope.inputs;
             var data = { edge: edge, inputs: inputs };
 
             var dlg = dialogs.create('/app/dialogs/edgeDlg.html', 'edgeDlgCtrl', data, { size: 'md' });
@@ -197,6 +198,7 @@
                     newEdge.from = newEdge.from.id || newEdge.from;
                     newEdge.to = newEdge.to.id || newEdge.to;
                     logger.success('Guardado');
+                    $scope.networkData.edges.update(newEdge);
                     callback(newEdge);
                 }, function () {
                     callback(null);
@@ -204,22 +206,16 @@
             );
         }
 
-         /**
-         * Obtiene las entradas definidas en las relaciones.
-         * @return {Array} todas las entradas posibles.
-         */
-        function getEdgeInputs() {
-            var inputs = [];
-            var edges = Object.values($scope.networkData.edges._data);
-
-            for (var i = 0; i < edges.length; i++) {
-                if ((inputs.indexOf(edges[i].label) < 0) && (edges[i].label != "")) {
-                    inputs.push(edges[i].label);
-                }
-            }
-
-            return inputs;
+        // Obtiene todas las entradas disponibles.
+        $scope.findAllInputs = function(){
+          simulatorSrv.findAllInputs().then(function(data){
+            $scope.inputs = data.response;
+          });
         }
+
+        $scope.inputs = [];
+
+        $scope.findAllInputs();
 
     }
 

@@ -18,7 +18,7 @@
       // Obtiene todas las entradas disponibles.
       $scope.findAllInputs = function(){
         simulatorSrv.findAllInputs().then(function(data){
-          $scope.inputs = data;
+          $scope.inputs = data.response;
         });
       }
 
@@ -51,6 +51,8 @@
         console.log("Id recibido: " + id);
         $location.path('/machine/edit/' + id);
       }
+
+      $scope.isActive = false;
     } // fin controlador.
 
 })();

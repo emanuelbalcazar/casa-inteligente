@@ -1,6 +1,6 @@
 <div class="col-md-6">
   <h4>Entradas</h4>
-  <table class="table table-bordered">
+  <table class="table table-bordered table-hover table-condensed">
     <thead>
       <tr>
         <th style="width: 5%;">#</th>
@@ -13,7 +13,7 @@
         <th scope="row">{{$index+1}}</th>
         <td>{{input.name + ' (' + input.unit + ')'}}</td>
         <td class="text-center">
-          <button type="button" ng-click="openInputSimulator(input)" class="btn btn-primary btn-sm navbar-btn">Simular</button>
+          <button type="button" ng-click="openInputSimulator(input)" class="btn btn-primary btn-xs navbar-btn">Simular</button>
         </td>
       </tr>
     </tbody>
@@ -21,7 +21,7 @@
 </div>
 <div class="col-md-6">
   <h4>Salidas</h4>
-  <table class="table table-bordered">
+  <table class="table table-bordered table-hover table-condensed">
     <thead>
       <tr>
         <th style="width: 5%;">#</th>
@@ -35,11 +35,11 @@
         <th scope="row">{{$index+1}}</th>
         <td>{{machine.name}}</td>
         <td class="text-center">
-          <i class="fa fa-circle" aria-hidden="true" style="color:red"></i>
-          <i class="fa fa-circle" aria-hidden="true" style="color:green"></i>
+          <i class="fa fa-circle" aria-hidden="true" style="color:red" ng-if="!isActive"></i>
+          <i class="fa fa-circle" aria-hidden="true" style="color:green" ng-if="isActive"></i>
         </td>
         <td class="text-center">
-          <button type="button" class="btn btn-success btn-sm navbar-btn" ng-click="editMachine(machine._id)">Editar</button>
+          <button type="button" class="btn btn-success btn-xs navbar-btn" ng-click="editMachine(machine._id)">Editar</button>
         </td>
       </tr>
     </tbody>

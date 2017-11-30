@@ -13,6 +13,11 @@
         <input type="text" name="description" on-enter="input[name='save']" ng-model="node.description" placeholder="Descripcion del nodo (Opcional)" class="form-control">
     </div>
 
+    <div class="form-group">
+      <label class="control-label">
+        Salida <input type="checkbox" name="output" ng-model="node.output" ng-true-value="'true'" ng-false-value="'false'">
+      </label>
+    </div>
 </div>
 
 <div class="modal-footer">

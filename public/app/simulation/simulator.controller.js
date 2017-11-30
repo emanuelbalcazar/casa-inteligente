@@ -26,6 +26,7 @@
       $scope.findAllMachines = function(){
         machinesSrv.findAll().then(function(data){
           $scope.machines = data.response;
+          $scope.verifyOutputs();
         });
       }
 
@@ -41,6 +42,7 @@
         dialog.result.then(function(result){
           console.log("Las maquinas han sido actualizadas!");
           $scope.machines = result.response;
+          $scope.verifyOutputs();
         }, function(){
           console.log("Cancelo el dialogo!");
         });
@@ -50,6 +52,16 @@
       $scope.editMachine = function(id){
         console.log("Id recibido: " + id);
         $location.path('/machine/edit/' + id);
+      }
+
+      $scope.verifyOutputs = function(){
+        $scope.machines.forEach(function(item,index){
+          for(var i = 0; i < item.nodes.length;i++){
+            if(item.currentState == item.nodes[i].id){
+              item.currentOutput = (item.nodes[i].output == 'true') ? true : false;
+            }
+          }
+        });
       }
 
       $scope.isActive = false;

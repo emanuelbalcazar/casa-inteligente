@@ -26,10 +26,11 @@ class Movement extends Handler {
 
             for (var i = 0; i < transitions.length; i++) {
                 // if the entry meets the condition, I transition and return the updated automata.
-                if ((value >= transitions[i].min) && (transitions[i].type == MOVEMENT)) {
+                if ((value == 1) && (transitions[i].type == MOVEMENT)) {
                     machine.currentState = transitions[i].to;
-                    controller.update(machine._id, machine, callback);
-                    return;
+                    controller.update(machine._id, machine, function(error, result) {
+                        
+                    });
                 }
             }
 

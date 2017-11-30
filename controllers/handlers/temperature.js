@@ -28,8 +28,9 @@ class Temperature extends Handler {
                 // if the entry meets the condition, I transition and return the updated automata.
                 if ((value >= transitions[i].min) && (value <= transitions[i].max) && (transitions[i].type == TEMPERATURE)) {
                     machine.currentState = transitions[i].to;
-                    controller.update(machine._id, machine, callback);
-                    return;
+                    controller.update(machine._id, machine, function(error, result) {
+                        
+                    });
                 }
             }
 

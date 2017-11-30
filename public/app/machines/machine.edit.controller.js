@@ -103,10 +103,12 @@
                 if (properties.nodes.length > 0) {
                     var node = $scope.networkData.nodes._data[properties.nodes[0]];
                     console.log('node: ', JSON.stringify(node));
+                    logger.info('¿Salida? ' + node.output , 'Nodo ' + node.id);
                 }
                 else if (properties.edges.length > 0) {
                     var edge = $scope.networkData.edges._data[properties.edges[0]];
                     console.log('edge: ', JSON.stringify(edge));
+                    logger.info('Minimo: ' + edge.min + ' Maximo: ' + edge.max, 'Arco ');
                 }
             }
         };

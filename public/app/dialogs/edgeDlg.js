@@ -33,6 +33,7 @@
         alert("El minimo no puede ser mayor al maximo!");
       }
       else{
+        $scope.edge.label = $scope.selectedInput.name;
         $modalInstance.close($scope.edge);
       }
     }

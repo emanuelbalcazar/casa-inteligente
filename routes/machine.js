@@ -22,6 +22,7 @@ router.get('/api/machine/:id', function (req, res) {
 router.post('/api/machine/:id', function (req, res) {
     var id = req.params.id;
     var machine = req.body;
+    machine.currentState = machine.nodes[0].id;
 
     controller.update(id, machine, function (error, result) {
         defaultCallback(res, error, result);

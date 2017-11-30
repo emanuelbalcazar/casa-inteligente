@@ -5,7 +5,7 @@ var schema = mongoose.Schema({
     description: { type: String, default: "sin descripcion" },
     nodes: Array,
     edges: Array,
-    currentState: { type: Number }
+    currentState: { type: String }
 });
 
 var Machine = mongoose.model('machine', schema);

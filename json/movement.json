@@ -1,5 +1,5 @@
 {
-    "name" : "Sensor de Movimiento",
+    "name" : "Alarma",
     "currentState" : "1",
     "edges" : [ 
         {

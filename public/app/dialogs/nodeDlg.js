@@ -11,6 +11,7 @@
     function nodeDlgCtrl($scope, $modalInstance, data) {
 
         $scope.node = data;
+        $scope.node.output = data.output || false;
 
         // Cierra la ventana del modal.
         $scope.close = function() {

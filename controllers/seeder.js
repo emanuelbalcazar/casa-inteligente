@@ -2,7 +2,7 @@ var async = require('async');
 var controller = require('./machine');
 
 // file names
-var machines = ['time', 'temperature', 'movement', 'humidity', 'brightness'];
+var machines = ['temperature', 'movement', 'humidity', 'brightness'];
 
 // delete all machines.
 controller.deleteAll(function (error, deleted) {

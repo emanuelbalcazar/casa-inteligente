@@ -1,47 +1,77 @@
 {
-    "name": "Sensor de Humedad",
-    "description": "Automata que simula el comportamiento del sensor de humedad en la casa inteligente.",
-    "currentState": 1,
-    "nodes": [
+    "name" : "Sensor de Humedad",
+    "currentState" : "2",
+    "edges" : [ 
         {
-            "id": 1,
-            "label": "Fundamentos",
-            "description": "",
-            "output": "false"
-        },
+            "max" : 100,
+            "min" : 81,
+            "type" : "humidity",
+            "to" : 3,
+            "from" : 2,
+            "description" : "",
+            "label" : "Humedad",
+            "id" : 2
+        }, 
         {
-            "id": 2,
-            "label": "Teoricos",
-            "description": "",
-            "output": "false"            
-        },
+            "id" : "5d126f01-0eee-4fd1-9e09-919f708894a3",
+            "max" : 15,
+            "min" : 0,
+            "label" : "Temperatura",
+            "type" : "temperature",
+            "to" : "04ffcab7-0bbc-42f1-b46c-3bf59a00758a",
+            "from" : 2
+        }, 
         {
-            "id": 3,
-            "label": "Informatica",
-            "description": "",
-            "output": "true"            
+            "id" : "cd5c6b86-fc0d-4328-9e80-0ac9a4bee489",
+            "max" : 23,
+            "min" : 20,
+            "label" : "Tiempo",
+            "type" : "time",
+            "to" : "8f7b3233-f3a0-4c09-aa54-d6e635748aa7",
+            "from" : "04ffcab7-0bbc-42f1-b46c-3bf59a00758a"
+        }, 
+        {
+            "id" : "ea474d80-30fd-45b5-a7ab-2bf066cc27ae",
+            "max" : 80,
+            "min" : 60,
+            "label" : "Humedad",
+            "type" : "humidity",
+            "to" : 3,
+            "from" : "8f7b3233-f3a0-4c09-aa54-d6e635748aa7"
+        }, 
+        {
+            "id" : "b2167d54-2ed8-4e64-9848-a75a13793db6",
+            "max" : 60,
+            "min" : 0,
+            "label" : "Humedad",
+            "type" : "humidity",
+            "to" : "04ffcab7-0bbc-42f1-b46c-3bf59a00758a",
+            "from" : 3
         }
     ],
-    "edges": [
+    "nodes" : [ 
         {
-            "id": 1,
-            "label": "",
-            "description": "",
-            "from": 1,
-            "to": 2,
-            "type": "humidity",
-            "min": 0,
-            "max": 100
-        },
+            "output" : "false",
+            "description" : "",
+            "label" : "Off",
+            "id" : 2
+        }, 
         {
-            "id": 2,
-            "label": "de la",
-            "description": "",
-            "from": 2,
-            "to": 3,
-            "type": "humidity",            
-            "min": 0,
-            "max": 100
+            "output" : "true",
+            "description" : "",
+            "label" : "On",
+            "id" : 3
+        }, 
+        {
+            "output" : false,
+            "label" : "Off",
+            "id" : "04ffcab7-0bbc-42f1-b46c-3bf59a00758a"
+        }, 
+        {
+            "output" : false,
+            "label" : "Off",
+            "id" : "8f7b3233-f3a0-4c09-aa54-d6e635748aa7"
         }
-    ]
+    ],
+    "description" : "Automata que simula el comportamiento del sensor de humedad en la casa inteligente."
 }

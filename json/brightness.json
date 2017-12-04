@@ -1,47 +1,159 @@
 {
-    "name": "Sensor de luminosidad",
-    "description": "Automata que simula el comportamiento del sensor de luminosidad en la casa inteligente.",
-    "currentState": 1,
-    "nodes": [
+    "name" : "Sensor de Luminosidad",
+    "currentState" : "1",
+    "edges" : [ 
         {
-            "id": 1,
-            "label": "Fundamentos",
-            "description": "",
-            "output": "false"
-        },
+            "id" : "447ecb6f-aacb-4465-85ed-00bb6d45034e",
+            "max" : 19,
+            "min" : 0,
+            "label" : "Tiempo",
+            "type" : "time",
+            "to" : 1,
+            "from" : 2
+        }, 
         {
-            "id": 2,
-            "label": "Teoricos",
-            "description": "",
-            "output": "false"            
-        },
+            "id" : "9d1ef2c0-1591-4e7c-ab28-81fe84bbd56a",
+            "max" : 23,
+            "min" : 20,
+            "label" : "Tiempo",
+            "type" : "time",
+            "to" : "d298f184-4bc6-46a5-8f0b-f1fffafcc779",
+            "from" : 1
+        }, 
         {
-            "id": 3,
-            "label": "Informatica",
-            "description": "",
-            "output": "true"            
+            "id" : "f9831638-6e47-415d-9c38-5a895a4dc36e",
+            "max" : 50,
+            "min" : 0,
+            "label" : "Luminosidad",
+            "type" : "brightness",
+            "to" : 2,
+            "from" : "d298f184-4bc6-46a5-8f0b-f1fffafcc779"
+        }, 
+        {
+            "id" : "9cfa7d92-ad18-4ff9-9d00-ff67e726fe8d",
+            "max" : 50,
+            "min" : 0,
+            "label" : "Luminosidad",
+            "type" : "brightness",
+            "to" : "2dbcdced-93e9-488d-a6d2-a9ea42d58ff5",
+            "from" : 1
+        }, 
+        {
+            "id" : "bd46eb3e-b7e2-4a4d-bf3b-802d6bf1d42f",
+            "max" : 23,
+            "min" : 20,
+            "label" : "Tiempo",
+            "type" : "time",
+            "to" : 2,
+            "from" : "2dbcdced-93e9-488d-a6d2-a9ea42d58ff5"
         }
     ],
-    "edges": [
+    "nodes" : [ 
         {
-            "id": 1,
-            "label": "",
-            "description": "",
-            "from": 1,
-            "to": 2,
-            "type": "brightness",
-            "min": 0,
-            "max": 100
-        },
+            "shapeProperties" : {},
+            "shadow" : {
+                "enabled" : false
+            },
+            "scaling" : {
+                "label" : {
+                    "enabled" : false
+                }
+            },
+            "margin" : {},
+            "icon" : {},
+            "font" : {
+                "mono" : {},
+                "ital" : {},
+                "boldital" : {},
+                "bold" : {}
+            },
+            "fixed" : {},
+            "color" : {
+                "hover" : {},
+                "highlight" : {}
+            },
+            "output" : "false",
+            "description" : "",
+            "label" : "Off",
+            "id" : 1
+        }, 
         {
-            "id": 2,
-            "label": "de la",
-            "description": "",
-            "from": 2,
-            "to": 3,
-            "type": "brightness",            
-            "min": 0,
-            "max": 100
+            "shapeProperties" : {},
+            "margin" : {},
+            "icon" : {},
+            "font" : {
+                "mono" : {},
+                "ital" : {},
+                "boldital" : {},
+                "bold" : {}
+            },
+            "fixed" : {},
+            "color" : {
+                "hover" : {},
+                "highlight" : {}
+            },
+            "shadow" : {
+                "enabled" : false
+            },
+            "scaling" : {
+                "label" : {
+                    "enabled" : false
+                }
+            },
+            "output" : "true",
+            "description" : "",
+            "label" : "On",
+            "id" : 2
+        }, 
+        {
+            "output" : false,
+            "shapeProperties" : {},
+            "shadow" : {},
+            "scaling" : {
+                "label" : {}
+            },
+            "margin" : {},
+            "icon" : {},
+            "font" : {
+                "mono" : {},
+                "ital" : {},
+                "boldital" : {},
+                "bold" : {}
+            },
+            "color" : {
+                "hover" : {},
+                "highlight" : {}
+            },
+            "fixed" : {
+                "y" : false,
+                "x" : false
+            },
+            "label" : "Off",
+            "id" : "d298f184-4bc6-46a5-8f0b-f1fffafcc779"
+        }, 
+        {
+            "output" : false,
+            "shapeProperties" : {},
+            "shadow" : {},
+            "scaling" : {
+                "label" : {}
+            },
+            "margin" : {},
+            "icon" : {},
+            "font" : {
+                "mono" : {},
+                "ital" : {},
+                "boldital" : {},
+                "bold" : {}
+            },
+            "fixed" : {},
+            "color" : {
+                "hover" : {},
+                "highlight" : {}
+            },
+            "label" : "Off",
+            "id" : "2dbcdced-93e9-488d-a6d2-a9ea42d58ff5"
         }
-    ]
+    ],
+    "description" : "Automata que simula el comportamiento de las lamparas en la casa inteligente."
 }

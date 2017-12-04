@@ -1,47 +1,79 @@
 {
-    "name": "Sensor de movimiento",
-    "description": "Automata que simula el comportamiento del sensor de movimiento en la casa inteligente.",
-    "currentState": 1,
-    "nodes": [
+    "name" : "Sensor de Movimiento",
+    "currentState" : "1",
+    "edges" : [ 
         {
-            "id": 1,
-            "label": "Fundamentos",
-            "description": "",
-            "output": "false"
-        },
+            "id" : "9cc8e0ba-155d-4257-bedb-ea2f05f7247c",
+            "max" : 9,
+            "min" : 0,
+            "label" : "Tiempo",
+            "type" : "time",
+            "to" : "bfb21829-0011-464b-a0a5-96b08572cff2",
+            "from" : 1
+        }, 
         {
-            "id": 2,
-            "label": "Teoricos",
-            "description": "",
-            "output": "false"            
-        },
+            "id" : "e30664d7-3535-4cd7-a40f-efe1386efcb8",
+            "max" : 1,
+            "min" : 1,
+            "label" : "Movimiento",
+            "type" : "movement",
+            "to" : "70cf7513-f8d7-437e-b0b1-577639ae6d8a",
+            "from" : "bfb21829-0011-464b-a0a5-96b08572cff2"
+        }, 
         {
-            "id": 3,
-            "label": "Informatica",
-            "description": "",
-            "output": "true"            
+            "id" : "505108b2-e416-479d-ae3d-04eaab954fcf",
+            "max" : 1,
+            "min" : 1,
+            "label" : "Movimiento",
+            "type" : "movement",
+            "to" : "f288e2dd-5a47-47fc-8a93-d1a5a70fdc2f",
+            "from" : 1
+        }, 
+        {
+            "id" : "e1a414eb-4773-43a5-9d61-03b7a2c36e9c",
+            "max" : 9,
+            "min" : 0,
+            "label" : "Tiempo",
+            "type" : "time",
+            "to" : "70cf7513-f8d7-437e-b0b1-577639ae6d8a",
+            "from" : "f288e2dd-5a47-47fc-8a93-d1a5a70fdc2f"
+        }, 
+        {
+            "id" : "26bd669f-b5f9-4fc3-9fa5-2f3cf8a53066",
+            "max" : 0,
+            "min" : 0,
+            "label" : "Movimiento",
+            "type" : "movement",
+            "to" : 1,
+            "from" : "70cf7513-f8d7-437e-b0b1-577639ae6d8a"
         }
     ],
-    "edges": [
+    "nodes" : [ 
         {
-            "id": 1,
-            "label": "",
-            "description": "",
-            "from": 1,
-            "to": 2,
-            "type": "temperature",
-            "min": 0,
-            "max": 1
-        },
+            "output" : "false",
+            "description" : "",
+            "label" : "Off",
+            "id" : 1
+        }, 
         {
-            "id": 2,
-            "label": "de la",
-            "description": "",
-            "from": 2,
-            "to": 3,
-            "type": "temperature",            
-            "min": 0,
-            "max": 1
+            "output" : false,
+            "label" : "Off",
+            "id" : "bfb21829-0011-464b-a0a5-96b08572cff2"
+        }, 
+        {
+            "fixed" : {
+                "y" : false,
+                "x" : false
+            },
+            "output" : "true",
+            "label" : "On",
+            "id" : "70cf7513-f8d7-437e-b0b1-577639ae6d8a"
+        }, 
+        {
+            "output" : false,
+            "label" : "Off",
+            "id" : "f288e2dd-5a47-47fc-8a93-d1a5a70fdc2f"
         }
-    ]
+    ],
+    "description" : "Automata que simula el comportamiento del sensor de movimiento en la casa inteligente."
 }

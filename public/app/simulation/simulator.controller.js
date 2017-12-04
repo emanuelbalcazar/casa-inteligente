@@ -3,12 +3,12 @@
 
   var controllerName = 'simulatorCtrl';
 
-  angular.module('app').controller(controllerName, ['$scope', 'dialogs', '$location', 'simulatorSrv', 'machinesSrv', '$timeout', simulatorCtrl]);
+  angular.module('app').controller(controllerName, ['$scope', 'dialogs', '$location', 'simulatorSrv', 'machinesSrv', '$interval', simulatorCtrl]);
 
   /**
    * Controlador de la pantalla principal.
    */
-  function simulatorCtrl($scope, dialogs, $location, simulatorSrv, machinesSrv, $timeout) {
+  function simulatorCtrl($scope, dialogs, $location, simulatorSrv, machinesSrv, $interval) {
 
     // Entradas
     $scope.inputs = [];
@@ -27,7 +27,7 @@
       machinesSrv.findAll().then(function (data) {
         $scope.machines = data.response;
         $scope.verifyOutputs();
-        
+
       });
     }
 
@@ -42,8 +42,9 @@
 
       dialog.result.then(function (result) {
         console.log("Las maquinas han sido actualizadas!");
-        $scope.machines = result.response;
-        $scope.verifyOutputs();
+        // $scope.machines = result.response;
+        // $scope.verifyOutputs();
+        $scope.simulationSequence.push(result);
       }, function () {
         console.log("Cancelo el dialogo!");
       });
@@ -66,6 +67,54 @@
     }
 
     $scope.isActive = false;
+
+    $scope.simulationSequence = [];
+
+    $scope.currentIndex = 0;
+
+    $scope.simulating = false;
+
+    $scope.removeElement = function(index){
+      $scope.simulationSequence.splice(index,1);
+    }
+
+    $scope.startSequence = function(){
+      $scope.simulating = true;
+      $scope.resetSimulation();
+      $scope.simulationStateText = 'Simulando...';
+      $interval($scope.simulateInput, 2000, $scope.simulationSequence.length).then(function(){
+        $scope.simulating = false;
+        $scope.simulationStateText = 'La simulación ha concluido exitosamente!';
+        $scope.currentInput = null;
+      });
+    }
+
+    $scope.simulateInput = function(){
+      var input = $scope.simulationSequence[$scope.currentIndex];
+      console.log("Simulacion: " + input.name);
+      simulatorSrv.excecuteInput(input).then(function(data){
+        console.log("Simulacion realizada con exito!");
+        $scope.machines = data.response;
+        $scope.verifyOutputs();
+      },function(error){
+        console.log('error');
+      })
+      input.simulated = true;
+      $scope.currentIndex++;
+    }
+
+    $scope.resetSimulation = function(){
+      $scope.currentIndex = 0;
+      $scope.simulationSequence.forEach(function (item, index) {
+        item.simulated = false;
+      });
+    }
+
+    $scope.resetInputs = function(){
+      $scope.simulationSequence = [];
+    }
+
+    $scope.simulationStateText = 'La simulación no ha comenzado!';
   } // fin controlador.
 
 })();

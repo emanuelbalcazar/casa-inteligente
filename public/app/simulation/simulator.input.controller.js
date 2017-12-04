@@ -19,16 +19,21 @@
       // Se ejecuta la entrada deseada.
       $scope.excecute = function(){
         var out = {
+          name : $scope.receiveInput.name,
+          unit : $scope.receiveInput.unit,
           type : $scope.receiveInput.type,
-          value : $scope.userInput
+          value : $scope.userInput,
+          simulated : false
         }
 
-        service.excecuteInput(out).then(function(data){
-          console.log("Simulacion realizada con exito!");
-          $modalInstance.close(data);
-        },function(error){
-          console.log('error');
-        })
+        $modalInstance.close(out);
+
+        // service.excecuteInput(out).then(function(data){
+        //   console.log("Simulacion realizada con exito!");
+        //   $modalInstance.close(data);
+        // },function(error){
+        //   console.log('error');
+        // })
       };
 
       // Cierra la ventana del modal.

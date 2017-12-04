@@ -13,7 +13,7 @@
         <th scope="row">{{$index+1}}</th>
         <td>{{input.name + ' (' + input.unit + ')'}}</td>
         <td class="text-center">
-          <button type="button" ng-click="openInputSimulator(input)" class="btn btn-primary btn-xs navbar-btn">Simular</button>
+          <button type="button" ng-click="openInputSimulator(input)" class="btn btn-primary btn-xs navbar-btn" ng-disabled="simulating">Agregar</button>
         </td>
       </tr>
     </tbody>
@@ -39,9 +39,51 @@
           <i class="fa fa-circle" aria-hidden="true" style="color:green" ng-if="machine.currentOutput"></i>
         </td>
         <td class="text-center">
-          <button type="button" class="btn btn-success btn-xs navbar-btn" ng-click="editMachine(machine._id)">Editar</button>
+          <button type="button" class="btn btn-warning btn-xs navbar-btn" ng-click="editMachine(machine._id)" ng-disabled="simulating">Editar</button>
         </td>
       </tr>
     </tbody>
   </table>
+</div>
+<div class="col-md-12">
+  <div class="col-md-8">
+    <h4>Estados de la simulación: {{simulationStateText}}</h4>
+  </div>
+  <div class="col-md-4">
+    <div class="btn-group pull-right">
+      <button type="button" class="btn btn-warning btn-sm navbar-btn" ng-click="resetInputs()" ng-disabled="simulating">Borrar listado</button>
+      <button type="button" class="btn btn-success btn-sm navbar-btn" ng-click="startSequence()" ng-disabled="simulationSequence.length == 0 || simulating">Comenzar simulación</button>
+    </div>
+  </div>
+</div>
+<div class="col-md-12">
+  <h4>Secuencia</h4>
+  <table class="table table-bordered table-hover table-condensed">
+    <thead>
+      <tr>
+        <th style="width: 5%;">#</th>
+        <th>Nombre</th>
+        <th style="width: 10%;">Unidad</th>
+        <th style="width: 10%;">Valor</th>
+        <th style="width: 5%;">Estado</th>
+        <th style="width: 5%;">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="input in simulationSequence">
+        <th scope="row">{{$index+1}}</th>
+        <td>{{input.name}}</td>
+        <td>{{input.unit}}</td>
+        <td>{{input.value}}</td>
+        <td class="text-center">
+          <i class="fa fa-times" aria-hidden="true" style="color:red" ng-if="!input.simulated"></i>
+          <i class="fa fa-check" aria-hidden="true" style="color:green" ng-if="input.simulated"></i>
+        </td>
+        <td class="text-center">
+          <button type="button" class="btn btn-danger btn-xs navbar-btn" ng-click="removeElement($index)">Quitar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="text-center" ng-if="simulationSequence.length == 0">No hay entradas</p>
 </div>

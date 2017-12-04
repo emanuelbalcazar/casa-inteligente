@@ -24,9 +24,6 @@ app.use(machine);
 var inputs = require('./routes/input');
 app.use(inputs);
 
-var seeder = require('./routes/seeder');
-app.use(seeder);
-
 // static files.
 app.use(express.static(path.join(__dirname, 'public')));
 

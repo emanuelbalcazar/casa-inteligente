@@ -1,0 +1,63 @@
+{
+    "name" : "Aire Acondicionado",
+    "currentState" : "1",
+    "edges" : [ 
+        {
+            "id" : 1,
+            "label" : "Temperatura",
+            "description" : "",
+            "from" : 1,
+            "to" : 2,
+            "type" : "temperature",
+            "min" : 0,
+            "max" : 15
+        }, 
+        {
+            "id" : "4e8d1a7f-e292-4958-a3e9-31030e958b7d",
+            "max" : 40,
+            "min" : 16,
+            "label" : "Temperatura",
+            "type" : "temperature",
+            "to" : 1,
+            "from" : 2
+        }, 
+        {
+            "id" : "0efe9d01-715c-4a20-989c-59f1cbb181a2",
+            "max" : 23,
+            "min" : 21,
+            "label" : "Tiempo",
+            "type" : "time",
+            "to" : "0afdf1c9-5598-47a5-9d89-89e9e7f7673f",
+            "from" : 1
+        }, 
+        {
+            "id" : "371bf578-0f52-4bf6-96e1-756b97bfbd20",
+            "max" : 40,
+            "min" : 16,
+            "label" : "Temperatura",
+            "type" : "temperature",
+            "to" : 1,
+            "from" : "0afdf1c9-5598-47a5-9d89-89e9e7f7673f"
+        }
+    ],
+    "nodes" : [ 
+        {
+            "id" : 1,
+            "label" : "Off",
+            "description" : "",
+            "output" : "false"
+        }, 
+        {
+            "id" : 2,
+            "label" : "On",
+            "description" : "",
+            "output" : "true"
+        }, 
+        {
+            "output" : "true",
+            "label" : "On",
+            "id" : "0afdf1c9-5598-47a5-9d89-89e9e7f7673f"
+        }
+    ],
+    "description" : "Automata que simula el comportamiento de la calefacción en la casa inteligente."
+}

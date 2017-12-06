@@ -68,6 +68,8 @@
 
     $scope.isActive = false;
 
+    $scope.repeat = false;
+
     $scope.simulationSequence = [];
 
     $scope.currentIndex = 0;
@@ -78,15 +80,42 @@
       $scope.simulationSequence.splice(index,1);
     }
 
+    $scope.repeat = function() {
+      $scope.repeat = true;
+      $scope.startSequence();
+    }
+
+    $scope.stop = function () {
+      $scope.repeat = false;
+      $scope.simulationStateText = 'La simulación ha concluido exitosamente!';
+      
+    }
+
     $scope.startSequence = function(){
       $scope.simulating = true;
       $scope.resetSimulation();
       $scope.simulationStateText = 'Simulando...';
-      $interval($scope.simulateInput, 2000, $scope.simulationSequence.length).then(function(){
+
+      if ($scope.repeat) {
+        
+          $interval($scope.simulateInput, 2000, $scope.simulationSequence.length).then(function(){
+            $scope.simulating = false;
+            $scope.simulationStateText = 'La simulación ha concluido exitosamente!';
+            $scope.currentInput = null;
+
+            if ($scope.repeat) {
+              $scope.startSequence();
+            }
+          });
+
+    
+      }
+
+      /* $interval($scope.simulateInput, 2000, $scope.simulationSequence.length).then(function(){
         $scope.simulating = false;
         $scope.simulationStateText = 'La simulación ha concluido exitosamente!';
         $scope.currentInput = null;
-      });
+      }); */
     }
 
     $scope.simulateInput = function(){

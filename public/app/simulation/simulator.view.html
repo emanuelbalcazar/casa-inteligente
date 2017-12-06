@@ -49,8 +49,11 @@
   <div class="col-md-8">
     <h4>Estados de la simulación: {{simulationStateText}}</h4>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-6">
     <div class="btn-group pull-right">
+        <button type="button" class="btn btn-primary btn-sm navbar-btn" ng-click="repeat()" ng-disabled="simulating">Repetir</button> 
+        <button type="button" class="btn btn-danger btn-sm navbar-btn" ng-click="stop()">Detener</button>        
+        
       <button type="button" class="btn btn-warning btn-sm navbar-btn" ng-click="resetInputs()" ng-disabled="simulating">Borrar listado</button>
       <button type="button" class="btn btn-success btn-sm navbar-btn" ng-click="startSequence()" ng-disabled="simulationSequence.length == 0 || simulating">Comenzar simulación</button>
     </div>
